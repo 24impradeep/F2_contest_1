@@ -1,43 +1,39 @@
-/** @format */
-
-function performOperations() {
-  const num1 = parseFloat(document.getElementById("num1").value);
-  const num2 = parseFloat(document.getElementById("num2").value);
-  const operator = document.getElementById("operator").value;
-
-  if (isNaN(num1) || isNaN(num2)) {
-    document.getElementById("result").innerText =
-      "Invalid input. Please enter valid numbers.";
-    return;
-  }
-
-  let result;
-
-  switch (operator) {
-    case "+":
-      result = num1 + num2;
-      break;
-    case "-":
-      result = num1 - num2;
-      break;
-    case "*":
-      result = num1 * num2;
-      break;
-    case "/":
-      if (num2 === 0) {
-        document.getElementById("result").innerText =
-          "Invalid input. Cannot divide by zero.";
-        return;
-      }
-      result = num1 / num2;
-      break;
-    default:
-      document.getElementById("result").innerText =
-        "Invalid input. Please select a valid operator.";
-      return;
-  }
-
-  document.getElementById("result").innerText = "Result: " + result;
+function calculate(num1, num2, operator) {
+  // Use if-else statements to determine which arithmetic operation to perform based on the operator entered.
+  // return the final value that you get after operating on num1 and num2 based on what the operator is
+  // if operator == "+" then return num1+num2 , else if operator == "-" then return num1-num2 and so on....
+  //   write your code here -->
+  if(operator==="+"){
+    return num1 + num2;
+}
+else if(operator==="-"){
+    return num1 - num2;
+}
+else if(operator==="*"){
+    return num1 * num2;
+}
+else if(operator==="/"){
+    return num1 / num2;
+}
+else{
+    return "Please Select a valid operator.";
+    }
 }
 
-
+// ignore the function below
+function performOperations() {
+  // Get the values of the two input fields and the operator.
+  var num1 = document.getElementById("num1").value;
+  var num2 = document.getElementById("num2").value;
+  var result = document.getElementById("result");
+  var operator = document.getElementById("operator").value;
+  // Check if the input values are valid.
+  if (isNaN(num1) || isNaN(num2)) {
+    result.textContent = "Please enter valid numbers!";
+  }
+  if (operator === "") {
+    result.textContent = "Please select an operator!";
+  }
+  const res = calculate(parseFloat(num1), parseFloat(num2), operator);
+  result.textContent = "Result is : " + res;
+}
